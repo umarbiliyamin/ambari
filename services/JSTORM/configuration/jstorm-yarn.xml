@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>jstorm.yarn.instance.name</name>
+        <value>jstormonyarn</value>
+    </property>
+    <property>
+        <name>jstorm.yarn.instance.dataDir</name>
+        <value>/user/yarn/</value>
+    </property>
+    <property>
+        <name>jstorm.yarn.instance.deploy.dir</name>
+        <value>/tmp/jstormonyarn/deploy</value>
+    </property>
+    <property>
+        <name>jstorm.yarn.user</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>jstorm.yarn.password</name>
+        <value>password</value>
+    </property>
+    <property>
+        <name>jstorm.yarn.oldpassword</name>
+        <value>oldpassword</value>
+    </property>
+    <property>
+        <name>jstorm.yarn.instance.deploy.destination</name>
+        <value>/user/yarn/</value>
+    </property>
+
+    <!--<property>-->
+        <!--<name>jstorm.yarn.java.home</name>-->
+        <!--<value>/opt/taobao/java</value>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>jstorm.yarn.hadoop.home</name>-->
+        <!--<value>/usr/hdp/current/hadoop-client</value>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>jstorm.yarn.python.home</name>-->
+        <!--<value>/home/tops/</value>-->
+    <!--</property>-->
+</configuration>

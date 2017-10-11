@@ -1,0 +1,170 @@
+version: 1
+
+dn: dc=example,dc=com
+dc: example
+o: example,Inc.
+objectclass: dcObject
+objectclass: organization
+objectclass: top
+
+dn: ou=Control,dc=example,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: Control
+
+dn: cn=kdc-adm,ou=Control,dc=example,dc=com
+cn: kdc-adm
+objectclass: simpleSecurityObject
+objectclass: organizationalRole
+objectclass: top
+userpassword: {SSHA}gktC2eX9iOnAqtbSkye8i/vhsHRLbSJ3
+
+dn: cn=kdc-srv,ou=Control,dc=example,dc=com
+cn: kdc-srv
+objectclass: simpleSecurityObject
+objectclass: organizationalRole
+objectclass: top
+userpassword: {SSHA}gktC2eX9iOnAqtbSkye8i/vhsHRLbSJ3
+
+dn: cn=Manager,ou=Control,dc=example,dc=com
+cn: Manager
+objectclass: simpleSecurityObject
+objectclass: organizationalRole
+objectclass: top
+userpassword: {SSHA}gktC2eX9iOnAqtbSkye8i/vhsHRLbSJ3
+
+dn: ou=Group,dc=example,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: Group
+
+dn: cn=hbase,ou=Group,dc=example,dc=com
+cn: hbase
+gidnumber: 1005
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=hdfs,ou=Group,dc=example,dc=com
+cn: hdfs
+gidnumber: 1001
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=hive,ou=Group,dc=example,dc=com
+cn: hive
+gidnumber: 1004
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=mapred,ou=Group,dc=example,dc=com
+cn: mapred
+gidnumber: 1003
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=spark,ou=Group,dc=example,dc=com
+cn: spark
+gidnumber: 1006
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=yarn,ou=Group,dc=example,dc=com
+cn: yarn
+gidnumber: 1002
+objectclass: posixGroup
+objectclass: top
+
+dn: ou=Kerberos,dc=example,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: Kerberos
+
+dn: ou=People,dc=example,dc=com
+objectclass: organizationalUnit
+objectclass: top
+ou: People
+
+dn: uid=hbase,ou=People,dc=example,dc=com
+cn: hbase
+gidnumber: 1005
+homedirectory: /home/hbase
+loginshell: /bin/bash
+objectclass: person
+objectclass: posixAccount
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: top
+sn: hbase
+uid: hbase
+uidnumber: 1005
+
+dn: uid=hdfs,ou=People,dc=example,dc=com
+cn: hdfs
+gidnumber: 1001
+homedirectory: /home/hdfs
+loginshell: /bin/bash
+objectclass: person
+objectclass: posixAccount
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: top
+sn: hdfs
+uid: hdfs
+uidnumber: 1001
+
+dn: uid=hive,ou=People,dc=example,dc=com
+cn: hive
+gidnumber: 1004
+homedirectory: /home/hive
+loginshell: /bin/bash
+objectclass: person
+objectclass: posixAccount
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: top
+sn: hive
+uid: hive
+uidnumber: 1004
+
+dn: uid=mapred,ou=People,dc=example,dc=com
+cn: mapred
+gidnumber: 1003
+homedirectory: /home/mapred
+loginshell: /bin/bash
+objectclass: person
+objectclass: posixAccount
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: top
+sn: mapred
+uid: mapred
+uidnumber: 1003
+
+dn: uid=spark,ou=People,dc=example,dc=com
+cn: spark
+gidnumber: 1006
+homedirectory: /home/spark
+loginshell: /bin/bash
+objectclass: person
+objectclass: posixAccount
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: top
+sn: spark
+uid: spark
+uidnumber: 1006
+
+dn: uid=yarn,ou=People,dc=example,dc=com
+cn: yarn
+gidnumber: 1002
+homedirectory: /home/yarn
+loginshell: /bin/bash
+objectclass: person
+objectclass: posixAccount
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: top
+sn: yarn
+uid: yarn
+uidnumber: 1002
+

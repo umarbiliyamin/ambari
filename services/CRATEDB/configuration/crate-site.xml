@@ -41,9 +41,9 @@
     <!--  Logging Configurations -->
     <property>
         <name>path_data</name>
-        <value>"/data/es1","/data/es2","/data/es3","/data/es4"</value>
-        <description>Path to directory where to store index data allocated for this node. e.g. "/mnt/first",
-            "/mnt/second"
+        <value>/data/es1,/data/es2,/data/es3,/data/es4</value>
+        <description>Path to directory where to store index data allocated for this node. e.g. /mnt/first,
+            /mnt/second
         </description>
     </property>
     <!--  Discovery -->
@@ -179,10 +179,5 @@
         <name>cluster_routing_allocation_node_concurrent_recoveries</name>
         <value>4</value>
         <description>Max concurrent recoveries, useful for fast recovery of the cluster nodes on restart</description>
-    </property>
-    <property>
-        <name>network_host</name>
-        <value>bond0.100:ipv4</value>
-        <description>Network interface will bind to</description>
     </property>
 </configuration>

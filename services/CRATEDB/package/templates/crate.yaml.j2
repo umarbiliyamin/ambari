@@ -9,8 +9,6 @@ cluster:
 discovery:
   zen:
     ping:
-      #multicast:
-      #  enabled: {{discovery_zen_ping_multicast_enabled}}
       unicast:
         hosts:
              - {{seed_node1}} 
@@ -29,31 +27,15 @@ http:
 transport:
   tcp:
     port: {{transport_tcp_port}}
-  
-#index:
-#  number_of_shards: {{index_number_of_shards}}
-#  merge.scheduler.max_thread_count: {{index_merge_scheduler_max_thread_count}}
-#  translog.flush_threshold_size: {{index_translog_flush_threshold_size}}
-#  refresh_interval: {{index_refresh_interval}}
-#  number_of_replicas: {{index_number_of_replicas}}
  
 indices:
   memory:
    index_buffer_size: {{index_buffer_size}}%
-   #store.throttle.type: {{index_store_throttle_type}}
   fielddata:
    cache.size: {{indices_fielddata_cache_size}}
-  #cluster:
-  # send_refresh_mapping: {{indices_cluster_send_refresh_mapping}}
 
 bootstrap.memory_lock: false
 bootstrap.system_call_filter: false
-
-#threadpool:
-#  bulk:
-#    queue_size: {{threadpool_bulk_queue_size}}
-#  index:
-#    queue_size: {{threadpool_index_queue_size}}
 
 discovery.zen.ping_timeout: {{discovery_zen_ping_timeout}}
 discovery.zen.fd.ping_interval: {{discovery_zen_fd_ping_interval}}
@@ -73,9 +55,6 @@ node.sql.read_only: false
 
 bulk.request_timeout: 16m
 
-#node.breaker.query.limit: 60%
-#node.breaker.query.overhead: 1.09
-
 cluster.info.update.interval: 30s
 monitor.jvm.gc.collector.young.warn: 1000ms
 monitor.jvm.gc.collector.young.info: 700ms
@@ -85,12 +64,8 @@ monitor.jvm.gc.collector.old.warn: 10s
 monitor.jvm.gc.collector.old.info: 5s
 monitor.jvm.gc.collector.old.debug: 2s
 
-#indices.fielddata.breaker.limit: 60%
-#indices.fielddata.breaker.overhead: 1.0.3
-
 cluster.routing.allocation.balance.shard: 0.45f
 cluster.routing.allocation.balance.index: 0.5f
-#cluster.routing.allocation.balance.primary: 0.05f
 cluster.routing.allocation.balance.threshold: 1.0f
 
 cluster.routing.allocation.enable: all

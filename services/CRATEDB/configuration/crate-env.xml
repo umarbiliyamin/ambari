@@ -23,11 +23,6 @@
         <value>/var/run/crate</value>
         <description></description>
     </property>
-    <property>
-        <name>es_heap_size</name>
-        <value>1g</value>
-        <description>es_heap_size</description>
-    </property>
     <!-- crate-env.sh -->
     <property>
         <name>content</name>

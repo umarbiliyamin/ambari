@@ -16,7 +16,7 @@
 
   <property>
     <name>ldap_kerberos_container_dn</name>
-    <value>ou=Kerberos,dc=example,dc=com</value>
+    <value>cn=krbcontainer,ou=Kerberos,dc=example,dc=com</value>
     <description>Admin principal e.g admin/admin</description>
   </property>
 

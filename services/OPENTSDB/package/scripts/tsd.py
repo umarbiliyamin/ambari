@@ -5,12 +5,8 @@ from resource_management.core.source import Template, InlineTemplate
 import os
 
 
-def install_opentsdb(first=False):
+def install_opentsdb():
     import params
-    # if first:
-    #     Execute('rm -rf %s' % '/opt/' + params.version_dir)
-    #     Execute('rm -rf %s' % params.install_dir)
-    #     Execute('rm -rf %s' % params.conf_dir)
     Directory(
         [params.conf_dir, params.opentsdb_pid_dir, params.opentsdb_log_dir],
         owner=params.opentsdb_user,
@@ -56,12 +52,6 @@ class Master(Script):
              )
         File(format("{conf_dir}/logback.xml"),
              content=InlineTemplate(params.log_content),
-             mode=0755,
-             owner=params.opentsdb_user,
-             group=params.opentsdb_group
-             )
-        File(format("{conf_dir}/opentsdb_jaas.conf"),
-             content=InlineTemplate(params.jaas_content),
              mode=0755,
              owner=params.opentsdb_user,
              group=params.opentsdb_group

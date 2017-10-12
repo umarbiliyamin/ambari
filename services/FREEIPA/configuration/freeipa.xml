@@ -4,7 +4,7 @@
 <configuration>
     <property>
         <name>ipa_domain</name>
-        <value>cloud.kave.io</value>
+        <value>ipa.example.com</value>
         <description>
             Domain name to be used by FreeIPA. Kerberos realm and ldap realm are derived from this value. Please choose a domain wisely, see https://www.freeipa.org/page/DNS#Caveats.
         </description>
@@ -158,7 +158,7 @@ nameserver 127.0.0.1
     </property>
     <property>
         <name>searchpath</name>
-        <value>/usr/lib/jvm/java-1.8*:/usr/lib/jvm/java-1.7*:/usr/jdk64/jdk1.7*:/usr/jdk64/jdk1.8*</value>
+        <value>/usr/java/default:/usr/lib/jvm/java-1.8*:/usr/jdk64/jdk1.8*</value>
         <description>
 			Java installation locations where JCE needs to be installed. This is required for kerberizing the cluster using freeIPA
 			With the default this will look in common installation directories for both openjdk and oraclejdk on centos7

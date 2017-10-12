@@ -23,7 +23,7 @@
     </property>
     <property>
         <name>heap_size</name>
-        <value>128m</value>
+        <value>4g</value>
         <description>Heap size</description>
     </property>
     <property>

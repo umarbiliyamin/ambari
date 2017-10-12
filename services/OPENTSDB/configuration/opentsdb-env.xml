@@ -35,18 +35,6 @@
     </property>
 
     <property>
-        <name>opentsdb_principal</name>
-        <description>Kerberos principal name for the opentsdb.</description>
-        <property-type>KERBEROS_PRINCIPAL</property-type>
-        <on-ambari-upgrade add="true"/>
-    </property>
-    <property>
-        <name>opentsdb_keytab</name>
-        <description>Location of the kerberos keytab file for the opentsdb.</description>
-        <on-ambari-upgrade add="true"/>
-    </property>
-
-    <property>
         <name>init_content</name>
         <display-name>opentsdb init template</display-name>
         <description>opentsdb init template</description>
@@ -80,19 +68,6 @@
         <property-type>VALUE_FROM_PROPERTY_FILE</property-type>
         <value-attributes>
             <property-file-name>logback.xml.j2</property-file-name>
-            <property-file-type>text</property-file-type>
-        </value-attributes>
-        <on-ambari-upgrade add="true"/>
-    </property>
-
-    <property>
-        <name>jaas_content</name>
-        <display-name>opentsdb jaas template</display-name>
-        <description>opentsdb jaas template</description>
-        <value/>
-        <property-type>VALUE_FROM_PROPERTY_FILE</property-type>
-        <value-attributes>
-            <property-file-name>opentsdb_jaas.conf.j2</property-file-name>
             <property-file-type>text</property-file-type>
         </value-attributes>
         <on-ambari-upgrade add="true"/>

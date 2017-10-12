@@ -15,10 +15,10 @@ tsd.storage.compaction.flush_speed = 1
 tsd.storage.enable_appends = true
 tsd.storage.hbase.prefetch_meta = true
 
-tsd.storage.hbase.data_table = {{data_table}}
-tsd.storage.hbase.uid_table = {{uid_table}}
-tsd.storage.hbase.meta_table = {{meta_table}}
-tsd.storage.hbase.tree_table = {{tree_table}}
+tsd.storage.hbase.data_table = tsdb
+tsd.storage.hbase.uid_table = tsdb-uid
+tsd.storage.hbase.meta_table = tsdb-meta
+tsd.storage.hbase.tree_table = tsdb-tree
 
 tsd.storage.hbase.zk_basedir = {{zk_basedir}}
 tsd.storage.hbase.zk_quorum = {{zk_quorum}}

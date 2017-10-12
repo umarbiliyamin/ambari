@@ -3,7 +3,6 @@
 from __future__ import print_function
 from resource_management import *
 import sys
-import requests
 from resource_management.libraries.script.script import Script
 
 
@@ -14,14 +13,15 @@ class ServiceCheck(Script):
 
         print("Running CrateDB service check", file=sys.stdout)
         payload = {'name': 'Buddy.  Dont Worry, I am Fine '}
-        r = requests.get('http://localhost:' + params.http_port + '/', params=payload)
-
-        if r.status_code == 200:
-            print(r.json(), file=sys.stdout)
-            sys.exit(0)
-        else:
-            print("CrateDB is not running", file=sys.stderr)
-            sys.exit(1)
+        pass
+        # r = requests.get('http://localhost:' + params.http_port + '/', params=payload)
+        #
+        # if r.status_code == 200:
+        #     print(r.json(), file=sys.stdout)
+        #     sys.exit(0)
+        # else:
+        #     print("CrateDB is not running", file=sys.stderr)
+        #     sys.exit(1)
 
 
 if __name__ == "__main__":

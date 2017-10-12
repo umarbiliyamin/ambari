@@ -58,18 +58,18 @@ class CrateDB(Script):
     def stop(self, env):
         import params
         env.set_params(params)
-        Execute("service crate stop", user=params.crate_user)
+        Execute("service crate stop")
 
     def start(self, env):
         import params
         env.set_params(params)
         self.configure(env)
-        Execute("service crate start", user=params.crate_user)
+        Execute("service crate start")
 
     def status(self, env):
         import params
         env.set_params(params)
-        Execute("service crate status", user=params.crate_user)
+        Execute("service crate status")
 
 
 if __name__ == "__main__":

@@ -1,77 +1,67 @@
-import glob
-import \
-    ambari_simplejson as json  # simplejson is much faster comparing to Python 2.6 json module and has the same functions set.
 import os
 from resource_management.core.resources.system import Directory, Execute, File
-from resource_management.core.exceptions import Fail
-from resource_management.core import shell
+from resource_management.libraries.resources.xml_config import XmlConfig
 from resource_management.core.source import Template, InlineTemplate
-from resource_management.libraries.functions.format import format
-from resource_management.libraries.script.script import Script
-from resource_management.libraries.functions.check_process_status import check_process_status
 from resource_management.core.resources.system import Execute
-from resource_management.libraries.providers.hdfs_resource import HdfsResourceProvider
-from resource_management import is_empty
-from resource_management.libraries.functions.decorator import retry
-from resource_management.core.logger import Logger
 
 
 def install_angel():
     import params
     Directory(
-        [params.angel_conf_dir],
+        [params.angel_conf_dir, params.angel_log_dir, params.angel_run_dir],
         owner=params.angel_user,
-        group=params.angel_group,
+        group=params.user_group,
         mode=0775,
         create_parents=True)
     if not os.path.exists('/opt/' + params.version_dir) or not os.path.exists(params.install_dir):
-        Execute('rm -rf %s' %  '/opt/' + params.version_dir)
+        Execute('rm -rf %s' % '/opt/' + params.version_dir)
         Execute('rm -rf %s' % params.install_dir)
         Execute(
             'wget ' + params.download_url + ' -O /tmp/' + params.filename,
             user=params.angel_user)
         Execute('tar -zxf /tmp/' + params.filename + ' -C /opt')
         Execute('ln -s /opt/' + params.version_dir + ' ' + params.install_dir)
-        Execute(' rm -rf ' + params.install_dir + '/conf')
+        Execute(
+            'cp -r ' + params.install_dir + '/conf/* ' + params.angel_conf_dir + ' ; rm -rf ' + params.install_dir + '/conf')
         Execute('ln -s ' + params.angel_conf_dir + ' ' + params.install_dir +
                 '/conf')
         Execute("echo 'export PATH=%s/bin:$PATH'>>/etc/profile.d/hadoop.sh" %
                 params.install_dir)
         Execute('chown -R %s:%s /opt/%s' %
-                (params.angel_user, params.angel_group, params.version_dir))
+                (params.angel_user, params.user_group, params.version_dir))
         Execute('chown -R %s:%s %s' %
-                (params.angel_user, params.angel_group, params.install_dir))
+                (params.angel_user, params.user_group, params.install_dir))
         Execute('/bin/rm -f /tmp/' + params.filename)
 
-class Angel(Script):
-    def get_component_name(self):
-        return "angel"
 
-    def pre_upgrade_restart(self, env, upgrade_type=None):
-        print 'todo'
+def angel(config_dir):
+    import params
 
-    def install(self, env):
-        import params
-        env.set_params(params)
-        install_angel()
+    Directory(params.angel_conf_dir, mode=0755)
 
-    def configure(self, env, upgrade_type=None):
-        import params
-        env.set_params(params)
+    Directory(config_dir,
+              owner=params.angel_user,
+              group=params.user_group,
+              create_parents=True)
 
-    def start(self, env, upgrade_type=None):
-        import params
-        env.set_params(params)
+    XmlConfig("angel-site.xml",
+              conf_dir=config_dir,
+              configurations=params.config['configurations']['angel-site'],
+              configuration_attributes=params.config['configuration_attributes']['angel-site'],
+              owner=params.angel_user,
+              group=params.user_group,
+              mode=0664)
 
-    def stop(self, env, upgrade_type=None):
-        import params
-        env.set_params(params)
+    XmlConfig("angel-default.xml",
+              conf_dir=config_dir,
+              configurations=params.config['configurations']['angel-default'],
+              configuration_attributes=params.config['configuration_attributes']['angel-default'],
+              owner=params.angel_user,
+              group=params.user_group,
+              mode=0664)
 
-    def status(self, env):
-        import params
-        env.set_params(params)
-        check_process_status(params.pid_file)
-
-if __name__ == "__main__":
-    Angel().execute()
-
+    angel_env_file_path = os.path.join(config_dir, "angel-env.sh")
+    File(angel_env_file_path,
+         owner=params.angel_user,
+         content=InlineTemplate(params.angel_env_sh_template),
+         mode=0555)
